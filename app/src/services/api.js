@@ -3,7 +3,7 @@ let token = '';
 const getOptions = (method, data) => {
   const options = {
     method,
-    headers:{}
+    headers: {}
   };
   if(data) {
     options.headers['Content-Type'] = 'application/json';
@@ -54,7 +54,7 @@ export default {
       .then(response => response.json());
   },
   updateGoal(goal) {
-    return fetch('/api/goals/id', getOptions('PUT', goal))
+    return fetch(`/api/goals/${goal.id}`, getOptions('PUT', goal))
       .then(response => response.json());
   }
 };

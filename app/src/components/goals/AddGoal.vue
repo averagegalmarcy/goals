@@ -15,7 +15,8 @@ function initGoal() {
   return {
     title: '',
     startDate: '',
-    endDate:''
+    endDate:'', 
+    completed: false
   };
 }
 export default {
