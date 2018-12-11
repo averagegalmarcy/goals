@@ -18,7 +18,7 @@ function checkAuth(req, res, next) {
   next(); 
 }
 
-app.use('./api/auth', auth);
+app.use('/api/auth', auth);
 app.use('/api/goals', checkAuth, goals);
 
 module.exports = app;
