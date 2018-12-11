@@ -32,6 +32,12 @@ export default {
   components: {
     Auth
   },
+  created() {
+    const json = window.localStorage.getItem('profile');
+    if(json) {
+      this.setUser(JSON.parse(json));
+    }
+  },
   methods: {
     handleSignUp(profile) {
       return api.signUp(profile)
@@ -51,8 +57,7 @@ export default {
       console.log(user);
       if(user) {
         api.setToken(user.id);
-        window.localStorage.setItem('profile', JSON.stringify(user));
-        this.$router.push('/goals');                                      
+        window.localStorage.setItem('profile', JSON.stringify(user));                                     
       }
       else {
         api.setToken();
@@ -60,11 +65,10 @@ export default {
       }
     },
     handleLogout() {
-    // TODO: tell api to forget token
       this.setUser(null);
       this.$router.push('/');
     }
-  },
+  }
 };
 </script>
 
