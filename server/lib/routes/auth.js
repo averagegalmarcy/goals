@@ -1,7 +1,15 @@
 const router = require('express').Router();
 const client = require('../db-client');
 const bcrypt = require('bcryptjs');
+const jwt = require('../jwt'); 
 
+function getProfileWithToken(profile) {
+  return {
+    id: profile.id,
+    username: profile.username,
+    token: jwt.sign({ id: profile.id })
+  };
+}
 router 
   .post('/signup', (req, res) => {
     const body = req.body;
@@ -32,7 +40,8 @@ router
         [username, bcrypt.hashSync(password, 8)]
         )
           .then(result => {
-            res.json(result.rows[0]);
+            const profile = result.rows[0];
+            res.json(getProfileWithToken(profile));
           });
       });
   })
@@ -59,10 +68,7 @@ router
           res.status(400).json({ error: 'username or password is invalid' });
           return;
         }
-        res.json({
-          id: result.rows[0].id,
-          username: result.rows[0].username
-        });
+        res.json(getProfileWithToken(profile));
       });
   });
 
