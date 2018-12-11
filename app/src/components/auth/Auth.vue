@@ -3,6 +3,7 @@
     <div v-if="method === 'signin'">
     <div class="container">
     <div class="jumbotron">
+      <h1> You need to Sign in First! </h1>
       <h2> Sign In </h2>
       <p>
         Need to Register?
