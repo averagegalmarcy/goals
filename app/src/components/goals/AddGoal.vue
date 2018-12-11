@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="handleSubmit">
     <label>Goal </label>
-    <input v-focus v-model="goal.name" require>
+    <input v-focus v-model="goal.title" require>
     <label>Start Date</label>
     <input v-focus v-model="goal.startDate" require>
     <label>End Date</label>

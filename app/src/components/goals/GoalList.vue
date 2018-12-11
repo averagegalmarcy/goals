@@ -8,7 +8,8 @@
 </template>
 
 <script>
-import Goal from './Goal';
+import Goal from './Goal'; 
+
 export default {
   props: {
     goals: null
@@ -17,3 +18,4 @@ export default {
     Goal
   }
 };
+</script>

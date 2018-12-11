@@ -8,7 +8,7 @@ router
     client.query(`
     SELECT id, title, start_date, end_date 
     FROM goal_table
-    WHERE profile.id = $1;
+    WHERE profile_id = $1;
     `,
     [req.userId])
       .then(result => {

@@ -24,13 +24,22 @@ export default {
     AddGoal,
     GoalList
   },
+  created() {
+    api.getGoals() 
+      .then(goals => {
+        this.goals = goals;
+      })
+      .catch(err => {
+        this.error = err;
+      });
+  },
   methods: {
     handleAdd(goal) {
       return api.addGoal(goal)
         .then(saved => {
           this.goals.push(saved);
         });
-    },
+    }
   }
 };
 

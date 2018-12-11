@@ -36,7 +36,6 @@ export default {
   signIn(credentials) {
     return fetch('/api/auth/signin', getOptions ('POST', credentials))
       .then(response => {
-        console.log(response); 
         if(response.ok) {
           return response.json();
         }
