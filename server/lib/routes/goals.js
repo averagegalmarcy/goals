@@ -6,7 +6,7 @@ const router = Router(); //eslint-disable-line new-cap
 router 
   .get('/', (req, res) => {
     client.query(`
-    SELECT id, title, start_date, end_date 
+    SELECT id, title, start_date, end_date, completed 
     FROM goal_table
     WHERE profile_id = $1;
     `,
@@ -28,7 +28,7 @@ router
         res.json(result.rows[0]);
       });
   })
-  .put('/:id/completed', (req, res) => {
+  .put('/:id', (req, res) => {
     const completed = req.body.completed;
 
     client.query(`
@@ -37,7 +37,7 @@ router
     WHERE id = $2
     AND profile_id = $3
     RETURNING *;
-    `,
+  `,
     [completed, req.params.id, req.userId]
     )
       .then(result => {

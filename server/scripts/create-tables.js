@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS goal_table (
   title VARCHAR(256) NOT NULL,
   start_date DATE,
   end_date DATE,
+  completed BOOLEAN,
   profile_id INT NOT NULL REFERENCES profile(id)
 );
 `)
