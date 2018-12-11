@@ -1,7 +1,9 @@
 <template>
   <div class="app">
+    <div class="container">
+    <div class="jumbotron">
     <header>
-      <span v-if="user">
+      <span id="user" v-if="user">
         Hello {{user.username}}!
       </span>
       <nav v-if="user">
@@ -16,7 +18,10 @@
         :onSignUp="handleSignUp"
         :onSignIn="handleSignIn"
       />
+      <img src="https://sloanreview.mit.edu/content/uploads/2018/05/S2E-Sull-Goals-1200-1200x627.jpg" alt="Third slide">
     </main>
+  </div>
+  </div>
   </div>
 </template>
 <script>
@@ -73,5 +78,14 @@ export default {
 </script>
 
 <style>
-
+img {
+  height: 100%;
+  width: 100%;
+}
+#user {
+  text-align: center;
+  text-decoration: underline greenyellow;
+  font-size: 20pt;
+  object-position: center;
+} 
 </style>

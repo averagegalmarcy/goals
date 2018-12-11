@@ -5,10 +5,6 @@
     <div class="jumbotron">
       <h1> You need to Sign in First! </h1>
       <h2> Sign In </h2>
-      <p>
-        Need to Register?
-        <button class="btn btn-info" @click="method = 'signup'"> Sign Up </button>
-      </p>
       <form @submit.prevent="handleSignInSubmit(profile)">
         <label>
           Username:
@@ -21,6 +17,10 @@
         <label> 
           <button class="btn btn-primary"> Sign In </button>
         </label>
+        <p>
+        Need to Register?
+        <button class="btn btn-info" @click="method = 'signup'"> Sign Up </button>
+      </p>
       </form>
     </div>
   </div>
