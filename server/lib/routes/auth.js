@@ -43,7 +43,7 @@ router
     const password = body.password;
 
     if(!username || !password) {
-      res.status(400).json({ error: 'username is already taken' });
+      res.status(400).json({ error: 'username and password required' });
       return;
     }
     client.query(`
