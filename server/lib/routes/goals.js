@@ -1,26 +1,32 @@
-// const router = require('express').Router();
-// const client = require('../db-client');
+const express = require('express');
+const client = require('../db-client');
+const Router = express.Router;
+const router = Router(); //eslint-disable-line new-cap
 
-// router 
-//   .post('/signup', (req, res) => {
-//     const body = req.body;
-//     const username = body.username;
-//     const password = body.password;
+router 
+  .get('/', (req, res) => {
+    client.query(`
+    SELECT id, title, start_date, end_date 
+    FROM goal_table
+    WHERE profile.id = $1;
+    `,
+    [req.userId])
+      .then(result => {
+        res.json(result.rows);
+      });
+  })
+  .post('/', (req, res) => {
+    const body = req.body; 
     
-//     if(!username || !password) {
-//       res.status(400).json({ error: 'username and password required' });
-//       return; 
-//     }
-//     client.query(`
-//     SELECT id
-//     FROM profile
-//     WHERE username = $1
-//     `,
-//     [username])
-//     .then(result => {
-//       if(result.rows.length > 0 {
-//         res.status(400).json({ error: 'username already exists'});
-//         return;
-//       })
-//     })
-//   }
+    client.query(`
+    INSERT INTO goal_table (title, start_date, end_date, profile_id)
+    VALUES($1, $2, $3, $4)
+    RETURNING *;
+    `,
+    [body.title, body.startDate, body.endDate, req.userId])
+      .then(result => {
+        res.json(result.rows[0]);
+      });
+  });
+
+module.exports = router;
