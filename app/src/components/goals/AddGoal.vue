@@ -3,9 +3,9 @@
     <label>Goal </label>
     <input v-focus v-model="goal.name" require>
     <label>Start Date</label>
-    <input v-focus v-model="goal.type" require>
+    <input v-focus v-model="goal.startDate" require>
     <label>End Date</label>
-    <input v-focus v-model="goal.type" require>
+    <input v-focus v-model="goal.endDate" require>
     <button>Add</button>
   </form>
 </template>

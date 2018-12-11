@@ -1,10 +1,12 @@
 <template>
   <section> 
     <div v-if="method === 'signin'">
+    <div class="container">
+    <div class="jumbotron">
       <h2> Sign In </h2>
       <p>
         Need to Register?
-        <button @click="method = 'signup'"> Sign Up </button>
+        <button class="btn btn-info" @click="method = 'signup'"> Sign Up </button>
       </p>
       <form @submit.prevent="handleSignInSubmit(profile)">
         <label>
@@ -16,11 +18,12 @@
           <input type="password" v-model="profile.password" required>
         </label>
         <label> 
-          <button> Sign In </button>
+          <button class="btn btn-primary"> Sign In </button>
         </label>
       </form>
     </div>
-    
+  </div>
+  </div>
     <div v-else>
       <h2>Sign Up</h2>
 

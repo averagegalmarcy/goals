@@ -52,7 +52,7 @@ export default {
       if(user) {
         api.setToken(user.id);
         window.localStorage.setItem('profile', JSON.stringify(user));
-        this.$router.push('/goals');
+        this.$router.push('/goals');                                      
       }
       else {
         api.setToken();
