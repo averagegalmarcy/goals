@@ -24,9 +24,9 @@ router
         }
         console.log('creating new user profile ...');
         client.query(`
-      INSERT INTO profile (username, password)
-      VALUES ($1, $2)
-      RETURNING id, username;
+        INSERT INTO profile (username, password)
+        VALUES ($1, $2)
+        RETURNING id, username;
       `,
         [username, password]
         )
