@@ -27,11 +27,11 @@ router
     FROM goal_table
     GROUP by profile_id;
 `,
-  [req.userId]
-  )
-    .then(result => {
-      res.json(result.rows)
-    });
+    []
+    )
+      .then(result => {
+        res.json(result.rows);
+      });
   })
   .post('/', (req, res) => {
     const body = req.body; 
@@ -39,7 +39,7 @@ router
     client.query(`
     INSERT INTO goal_table (title, start_date, end_date, profile_id)
     VALUES($1, $2, $3, $4)
-    RETURNING *;ç
+    RETURNING *;
     `,
     [body.title, body.startDate, body.endDate, req.userId])
       .then(result => {
