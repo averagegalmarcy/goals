@@ -4,7 +4,7 @@
       <RouterLink id="goals-link" to="/goals"> View Goals </RouterLink>
     </p> 
     <h2> Welcome to Goalsipration Board </h2>
-    <table v-if="stats">
+    <table align="center" v-if="stats">
       <thead>
         <tr>
           <th> Min </th>
@@ -43,6 +43,17 @@ export default {
 </script>
 
 <style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 20px; 
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: rgb rgb(255, 255, 255); 
+}
+th {
+  text-align: center;
+}
 #goals-link {
   font-size: 20pt;
 }
