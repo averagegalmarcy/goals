@@ -11,6 +11,7 @@ app.use(express.json());
 
 function checkAuth(req, res, next) {
   const token = req.get('Authorization');
+  console.log('token\n\n', token); 
   if(!token) {
     res.status(401).json({ error: 'no authorization found' });
     return;

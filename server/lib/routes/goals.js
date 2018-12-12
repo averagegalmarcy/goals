@@ -5,6 +5,7 @@ const router = Router(); //eslint-disable-line new-cap
 
 router 
   .get('/', (req, res) => {
+    console.log('banana\n\n', req.userId);
     client.query(`
     SELECT id, title, start_date, end_date, completed 
     FROM goal_table
@@ -21,7 +22,7 @@ router
     client.query(`
     INSERT INTO goal_table (title, start_date, end_date, profile_id)
     VALUES($1, $2, $3, $4)
-    RETURNING *;
+    RETURNING *;ç
     `,
     [body.title, body.startDate, body.endDate, req.userId])
       .then(result => {

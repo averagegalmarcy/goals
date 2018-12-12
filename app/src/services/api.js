@@ -11,6 +11,7 @@ const getOptions = (method, data) => {
   }
   if(token) {
     options.headers.Authorization = token;
+    console.log('got here', token); 
   }
   return options;
 };
