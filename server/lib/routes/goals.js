@@ -16,6 +16,23 @@ router
         res.json(result.rows);
       });
   })
+  .get('/stats', (req, res) => {
+    client.query(`
+    SELECT
+      profile_id,
+      MIN(end_date - start_date) as mindiff,
+      MAX(end_date - start_date) as maxdiff,
+      CAST(AVG(end_date - start_date) as int) as average,
+      count(goal_table.id) as "count"
+    FROM goal_table
+    GROUP by profile_id;
+`,
+  [req.userId]
+  )
+    .then(result => {
+      res.json(result.rows)
+    });
+  })
   .post('/', (req, res) => {
     const body = req.body; 
     
