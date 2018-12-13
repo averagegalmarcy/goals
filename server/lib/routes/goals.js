@@ -5,12 +5,30 @@ const router = Router(); //eslint-disable-line new-cap
 
 router 
   .get('/', (req, res) => {
+    console.log('banana\n\n', req.userId);
     client.query(`
     SELECT id, title, start_date, end_date, completed 
     FROM goal_table
     WHERE profile_id = $1;
     `,
     [req.userId])
+      .then(result => {
+        res.json(result.rows);
+      });
+  })
+  .get('/stats', (req, res) => {
+    client.query(`
+    SELECT
+      profile_id,
+      MIN(end_date - start_date) as mindiff,
+      MAX(end_date - start_date) as maxdiff,
+      CAST(AVG(end_date - start_date) as int) as average,
+      count(goal_table.id) as "count"
+    FROM goal_table
+    GROUP by profile_id;
+`,
+    []
+    )
       .then(result => {
         res.json(result.rows);
       });

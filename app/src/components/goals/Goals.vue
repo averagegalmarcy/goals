@@ -43,8 +43,8 @@ export default {
     handleEdit(goal) {
       return api.updateGoal(goal)
         .then(updated => {
-          const index = this.goal.findIndex((goal) => goal.id === updated.id);
-          this.goal.splice(index, 1, updated);
+          const index = this.goals.findIndex((goal) => goal.id === updated.id);
+          this.goals.splice(index, 1, updated);
         }); 
     }
   }

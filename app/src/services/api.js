@@ -3,7 +3,7 @@ let token = '';
 const getOptions = (method, data) => {
   const options = {
     method,
-    headers:{}
+    headers: {}
   };
   if(data) {
     options.headers['Content-Type'] = 'application/json';
@@ -11,6 +11,7 @@ const getOptions = (method, data) => {
   }
   if(token) {
     options.headers.Authorization = token;
+    console.log('got here', token); 
   }
   return options;
 };
@@ -54,7 +55,11 @@ export default {
       .then(response => response.json());
   },
   updateGoal(goal) {
-    return fetch('/api/goals/id', getOptions('PUT', goal))
+    return fetch(`/api/goals/${goal.id}`, getOptions('PUT', goal))
+      .then(response => response.json());
+  },
+  getGoalStats() {
+    return fetch('/api/goals/stats', getOptions('GET'))
       .then(response => response.json());
   }
 };
