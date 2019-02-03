@@ -4,7 +4,6 @@
     <div class="container">
     <div class="jumbotron">
       <h1> You need to Sign in First! </h1>
-      <h2> Sign In </h2>
       <form @submit.prevent="handleSignInSubmit(profile)">
         <label>
           Username:
@@ -38,7 +37,7 @@
           <input type="password" v-model="profile.password" required>
         </label>
         <label>
-          <button>Sign Up</button>
+          <button class="sign-up">Sign Up</button>
         </label>
       </form>
     </div>
@@ -84,5 +83,4 @@ export default {
 </script>
 
 <style>
-
 </style>
