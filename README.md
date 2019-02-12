@@ -1,8 +1,9 @@
 ### Goals
 
-![alt text]
+![alt text](https://github.com/marcysilverman/goals/blob/master/goals-photo.png)
 
-## Project setup
+## Description
+This app is a fullstack app that utilizes Postgres for the back-end and Vue.js for the front-end. This app is a multi-route that allowed the user to sign-in or sign-up to an account which was stored in a Postgres database. This app also utilized jwt tokens and bycryptjs in order to authenticate users and tokenize them once they are signed in. Users are able to add goals to a list with a due date and be able to mark the goal as done. 
 ```
 npm install
 ```
