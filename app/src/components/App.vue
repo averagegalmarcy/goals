@@ -18,7 +18,7 @@
         :onSignUp="handleSignUp"
         :onSignIn="handleSignIn"
       />
-      <img src="https://sloanreview.mit.edu/content/uploads/2018/05/S2E-Sull-Goals-1200-1200x627.jpg" alt="Third slide">
+      <img src="/photo.jpg">
     </main>
   </div>
   </div>
@@ -77,10 +77,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 img {
-  height: 100%;
-  width: 100%;
+  height: 600px;
+  width:800px;
 }
 #user {
   text-align: center;
